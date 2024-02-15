@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.myself.myselfContact.model.ContentEntity" />
+
+        <variable
+            name="handler"
+            type="com.myself.myselfContact.MainActivity.Handler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_all_line_appbar"
+        android:onClick="@{()->handler.onClickItem(item)}"
+        android:onLongClick="@{()->handler.onLongClickItem(item)}"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="없음"
+            android:drawableStart="@drawable/baseline_add_24"
+            android:drawablePadding="8dp"
+            android:text="@{item.name}"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+<!--        <androidx.appcompat.widget.AppCompatCheckBox-->
+<!--            android:id="@+id/contentCheckBox"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:button="@null"-->
+<!--            android:background="@drawable/custom_check_box_background"-->
+<!--            android:checked="@{item.done}"-->
+<!--            android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item,check)}"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"/>-->
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/favoriteCheckBox"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:button="@null"
+            android:background="@drawable/custom_check_box_favorite_background"
+            android:checked="@{item.done}"
+            android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item,check)}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/memoTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="없음+추후삭제예정"
+            android:drawableStart="@drawable/baseline_add_24"
+            android:drawablePadding="8dp"
+            android:text="@{item.phoneNumber}"
+            android:textColorHint="#CCCCCC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
